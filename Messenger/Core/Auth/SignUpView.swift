@@ -38,8 +38,9 @@ struct SignUpView: View {
             }.padding(24)
             
             //create account button
-            Button {
-             // handle action
+            NavigationLink {
+             ChatView()
+             .navigationBarBackButtonHidden(true)
             } label: {
             Text("Create New Account")
             .foregroundColor(Color.white)
