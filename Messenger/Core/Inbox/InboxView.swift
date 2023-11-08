@@ -9,66 +9,29 @@ import SwiftUI
 
 
 
-struct ActiveNowRow: View {
-    var body: some View {
-        VStack {
-            ZStack(alignment: .bottomTrailing) {
-                
-                Image(systemName: "person.circle.fill")
-                    .resizable()
-                    .foregroundColor(Color(.systemGray4))
-                    .frame(width: 60, height: 60)
-                
-                ZStack {
-                    Circle()
-                        .fill(Color.white)
-                        .frame(width: 18, height: 18)
-                    Circle()
-                        .fill(Color.green)
-                        .frame(width: 12, height: 12)
-                }
-                
-            }
-            Text("Sean Won")
-                .foregroundColor(Color.black)
-                .font(.subheadline)
-                .fontWeight(.semibold)
-            
-                
-        }
-    }
-}
-
-
-struct ActiveNow: View {
-    var body: some View {
-        
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-                ForEach(1...13, id: \.self) { user in
-                    ActiveNowRow()
-                }
-            }
-            .padding(.horizontal)
-            .frame(height: 100)
-        }
-    }
-}
 
 struct InboxView: View {
     var body: some View {
         NavigationStack {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             //Active now
             ActiveNow()
             //chat list with last message
+            ForEach(1...10, id: \.self) {_ in
+            InboxRow()
+            }.padding(.horizontal)
         }.toolbar {
             
             ToolbarItem(placement: .navigationBarLeading) {
+             HStack {
                 Image(systemName: "person.circle.fill")
                     .resizable()
                     .foregroundColor(Color(.systemGray4))
                     .frame(width: 26, height: 26)
+                Text("Chats")
+                .font(.largeTitle)
+                .fontWeight(.black)
+                }
                 
             }
             ToolbarItem(placement: .navigationBarTrailing) {
